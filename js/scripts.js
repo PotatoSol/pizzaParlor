@@ -17,10 +17,18 @@ Pizza.prototype.setSize = function (inputSize){ //small = 1, medium, 2, large = 
 }
 
 Pizza.prototype.calculatePrice = function(){
-  let returnCost;
-  
+  let returnCost = 9; 
   //do stuff
-
+  let sizeMod = 1 + (this.size * .1); 
+  let toppingsMod = this.toppings.length();
+  this.toppings.forEach(ele, function(){
+    if(ele === "pepperoni" || ele === "sausage"){
+      toppingsMod++;
+    }
+  });
+  returnCost += toppingsMod;
+  returnCost *= sizeMod;
   this.cost = returnCost;
   return returnCost;
 }
+

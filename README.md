@@ -13,8 +13,8 @@ Code: newPizza.setSize("small");
 Expected output: true; newPizza = {toppings: ["pepperoni"]; size: "1", cost: -1}
 
 It will: "Create a calculatePrice function"
-Code: 
-Expected output: 
+Code: newPizza.calculatePrice();
+Expected output: newPizza.calculatePrice() = 9.9
 
 
 
