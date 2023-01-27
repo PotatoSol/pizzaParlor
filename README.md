@@ -14,16 +14,7 @@ Expected output: true; newPizza = {toppings: ["pepperoni"]; size: "1", cost: -1}
 
 It will: "Create a calculatePrice function"
 Code: newPizza.calculatePrice();
-Expected output: newPizza.calculatePrice() = 9.9
-
-
-
-
-
-
-
-
-
+Expected output: newPizza.calculatePrice() = 11
 
 
 
