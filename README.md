@@ -1,4 +1,4 @@
-## Describe Pizza Functinos
+## Describe Pizza Functions
 
 It will: "Create a Pizza object"
 Code: let newPizza = new Pizza();
@@ -16,8 +16,11 @@ It will: "Create a calculatePrice function"
 Code: newPizza.calculatePrice();
 Expected output: newPizza.calculatePrice() = 11
 
+## Describe HTML Functions
 
-
+It will: "Capture button clicks"
+Code: 
+Expected output: 
 
 ===
 raw

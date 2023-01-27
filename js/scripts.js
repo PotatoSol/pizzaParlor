@@ -32,3 +32,16 @@ Pizza.prototype.calculatePrice = function(){
   return returnCost;
 }
 
+
+//============
+
+window.addEventListener("load", function(){
+  document.getElementById("selectPizzaSize").addEventListener("submit", function(event){
+    event.preventDefault();
+    console.log('wow');
+  });
+  document.getElementById("selectToppings").addEventListener("submit", function(event){
+    event.preventDefault();
+    console.log('meow');
+  });
+});
