@@ -16,11 +16,13 @@ It will: "Create a calculatePrice function"
 Code: newPizza.calculatePrice();
 Expected output: newPizza.calculatePrice() = 11
 
-## Describe HTML Functions
+It will: "Capture size"
+Code:  Click medium size drop down and hit submit
+Expected output: returns size 2;
 
-It will: "Capture button clicks"
-Code: 
-Expected output: 
+It will: "Capture toppings"
+Code:  Click toppings button with onions and peppers
+Expected output: [vOnions, vPepper] returned
 
 ===
 raw
