@@ -10,17 +10,17 @@
 </head>
 <body>
   <form id = "selectToppings"> <p>Select your toppings:</p>
-    <input type="checkbox" id="pepperoni" name="nPepperoni" value="vPepperoni">
+    <input type="checkbox" id="pepperoni" name="nPepperoni" value="Pepperoni">
     <label for="pepperonis"> Pepperoni </label><br>
-    <input type="checkbox" id="sausage" name="nSausage" value="vSausage">
+    <input type="checkbox" id="sausage" name="nSausage" value="Italian Sausage">
     <label for="sausages"> Italian Suasage </label><br>
-    <input type="checkbox" id="mushroom" name="nMushroom" value="vMushroom">
+    <input type="checkbox" id="mushroom" name="nMushroom" value="Mushrooms">
     <label for="mushrooms"> Mushrooms </label><br> 
-    <input type="checkbox" id="onion" name="nOnion" value="vOnion">
+    <input type="checkbox" id="onion" name="nOnion" value="Onions">
     <label for="onions"> Onions </label><br> 
-    <input type="checkbox" id="pepper" name="nPepper" value="vPepper">
+    <input type="checkbox" id="pepper" name="nPepper" value="Green Peppers">
     <label for="peppers"> Green Peppers </label><br> 
-    <input type="checkbox" id="cheese" name="nCheese" value="vCheese">
+    <input type="checkbox" id="cheese" name="nCheese" value="Extra Cheese">
     <label for="cheeses"> Extra Cheese </label><br><br>
     <button type = "toppingButton" id = "selectToppings">Select Toppings</button>
   </form><br><br>
@@ -36,7 +36,9 @@
     <button type = "pizzaSizeButton" id = "selectPizzaSize">Select Size</button>
   </form>
   <p id = "outputArea" class = "hidden">Make sure you made all your selections! </p>
-  <ul id = "orderReceipt" class = "hidden">Here's your order:
+  <p id = "receipt" class = "hidden">Here's your order: </p>
+  <p id = "pizzaSize" class = "hidden">A small pizza with: </p>
+  <ul id = "orderReceipt" class = "hidden"><br>
 
   </ul>
 </body>

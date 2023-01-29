@@ -8,8 +8,11 @@ Pizza.prototype.isReady = function(){
   if((this.size !== -1)){
     this.calculatePrice()
     appendPrice(this.cost);
+    showSize(this);
     showElement(document.getElementById("outputArea"));
     showElement(document.getElementById("orderReceipt"));
+    showElement(document.getElementById("receipt"));
+    showElement(document.getElementById("pizzaSize"));
   }
 }
 
@@ -32,7 +35,7 @@ Pizza.prototype.calculatePrice = function(){
   let sizeMod = 1 + (this.size * .1); 
   let toppingsMod = this.toppings.length;
   this.toppings.forEach(function(ele){
-    if(ele === "vPepperoni" || ele === "vSausage"){
+    if(ele === "Pepperoni" || ele === "Italian Sausage"){
       toppingsMod++;
     }
   });
@@ -58,13 +61,16 @@ Pizza.prototype.capturePizzaSize = function(){
       this.size = 4;
       break;
   }
+  this.isReady();
 }
 
 Pizza.prototype.captureToppings = function(){
   let checkedBoxes = [];
+  clearReceipt();
   for(var i = 0; (i < (document.getElementById("selectToppings").length - 1)); i++){
     if(document.getElementById("selectToppings")[i].checked){
       checkedBoxes.push(document.getElementById("selectToppings")[i].value);
+      appendReceipt(document.getElementById("selectToppings")[i].value);
     }
   }
   this.toppings = checkedBoxes;
@@ -76,24 +82,42 @@ function showElement(elementToShow){
 }
 
 function appendPrice(pizzaPrice){
-  console.log(pizzaPrice);
   document.getElementById("outputArea").innerText = ("Your total is: $" + pizzaPrice.toFixed(2));
 }
 
 function appendReceipt(topping){
-  console.log(topping);
   let newTopping = document.createElement("li");
-  newTopping.innerText(topping);
+  newTopping.innerText = topping;
   newTopping.setAttribute("class", "notHidden");
   document.getElementById("orderReceipt").append(newTopping);
 }
 
 function clearReceipt(){
-  while(document.getElementById("orderReceipt").getFirstChild()){
-    document.getElementById("orderReceipt").removeFirstChild()
+  while(document.getElementById("orderReceipt").hasChildNodes()){
+    document.getElementById("orderReceipt").removeChild(document.getElementById("orderReceipt").firstChild);
   }
 }
 
+function showSize(inputPizza){
+  let toppings = "pizza";
+  if(inputPizza.toppings.length > 0){
+    toppings = "pizza with:";
+  }
+  let size;
+  if(inputPizza.size == 1){
+    size = "small";
+  } else if (inputPizza.size == 2){
+    size = "medium";
+  } else if (inputPizza.size == 3){
+    size = "large"; 
+  } else if (inputPizza.size == 4){
+    size = "extra large";
+  } else {
+    size = "super omega large"; //this should never happen
+  }
+
+  document.getElementById("pizzaSize").innerText = "A " + size + " " + toppings;
+}
 //============
 
 window.addEventListener("load", function(){
