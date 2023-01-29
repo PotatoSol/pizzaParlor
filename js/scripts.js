@@ -29,6 +29,7 @@ Pizza.prototype.calculatePrice = function(){
   returnCost += toppingsMod;
   returnCost *= sizeMod;
   this.cost = returnCost;
+  console.log(returnCost);
   return returnCost;
 }
 
