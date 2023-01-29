@@ -4,6 +4,12 @@ function Pizza(){
   this.cost = -1;
 }
 
+Pizza.prototype.isReady = function(){
+  if((this.size !== -1)&& (this.toppings.length > 0)){
+    this.calculatePrice()
+  };
+}
+
 Pizza.prototype.addTopping = function(inputTopping) {
   this.toppings.push(inputTopping);
 };
@@ -20,18 +26,19 @@ Pizza.prototype.calculatePrice = function(){
   let returnCost = 9; 
   //do stuff
   let sizeMod = 1 + (this.size * .1); 
-  let toppingsMod = this.toppings.length();
-  this.toppings.forEach(ele, function(){
-    if(ele === "pepperoni" || ele === "sausage"){
+  let toppingsMod = this.toppings.length;
+  this.toppings.forEach(function(ele){
+    if(ele === "vPepperoni" || ele === "vSausage"){
       toppingsMod++;
     }
   });
   returnCost += toppingsMod;
   returnCost *= sizeMod;
   this.cost = returnCost;
-  console.log(returnCost);
   return returnCost;
 }
+
+
 
 Pizza.prototype.capturePizzaSize = function(){
   let inputSize = document.getElementById("size").value;
@@ -49,7 +56,6 @@ Pizza.prototype.capturePizzaSize = function(){
       this.size = 4;
       break;
   }
-  console.log(this.size);
 }
 
 Pizza.prototype.captureToppings = function(){
@@ -60,7 +66,6 @@ Pizza.prototype.captureToppings = function(){
     }
   }
   this.toppings = checkedBoxes;
-  console.log(this.toppings);
 }
 
 //============
@@ -70,9 +75,11 @@ window.addEventListener("load", function(){
   document.getElementById("selectPizzaSize").addEventListener("submit", function(event){
     event.preventDefault();
     userPizza.capturePizzaSize();
+    userPizza.isReady();
   });
   document.getElementById("selectToppings").addEventListener("submit", function(event){
     event.preventDefault();
     userPizza.captureToppings();
+    userPizza.isReady();
   });
 });

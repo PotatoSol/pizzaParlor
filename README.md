@@ -24,6 +24,10 @@ It will: "Capture toppings"
 Code:  Click toppings button with onions and peppers
 Expected output: [vOnions, vPepper] returned
 
+It will: "Check if toppings and size are greater than -1, and then calculate price"
+Code: Add toppings and choose size
+Expected output: calculatePrice called 
+
 ===
 raw
 ===
