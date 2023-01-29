@@ -7,6 +7,8 @@ function Pizza(){
 Pizza.prototype.isReady = function(){
   if((this.size !== -1)&& (this.toppings.length > 0)){
     this.calculatePrice()
+    appendPrice(this.cost);
+    showElement(document.getElementById("outputArea"));
   };
 }
 
@@ -38,8 +40,6 @@ Pizza.prototype.calculatePrice = function(){
   return returnCost;
 }
 
-
-
 Pizza.prototype.capturePizzaSize = function(){
   let inputSize = document.getElementById("size").value;
   switch(inputSize) {
@@ -66,6 +66,16 @@ Pizza.prototype.captureToppings = function(){
     }
   }
   this.toppings = checkedBoxes;
+}
+
+//============
+function showElement(elementToShow){
+  elementToShow.setAttribute("class", "notHidden");
+}
+
+function appendPrice(pizzaPrice){
+  console.log(pizzaPrice);
+  document.getElementById("outputArea").innerText = ("Your total is: $" + pizzaPrice.toFixed(2));
 }
 
 //============
