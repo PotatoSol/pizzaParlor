@@ -5,15 +5,17 @@ function Pizza(){
 }
 
 Pizza.prototype.isReady = function(){
-  if((this.size !== -1)&& (this.toppings.length > 0)){
+  if((this.size !== -1)){
     this.calculatePrice()
     appendPrice(this.cost);
     showElement(document.getElementById("outputArea"));
-  };
+    showElement(document.getElementById("orderReceipt"));
+  }
 }
 
 Pizza.prototype.addTopping = function(inputTopping) {
   this.toppings.push(inputTopping);
+  appendReceipt(inputTopping);
 };
 
 Pizza.prototype.setSize = function (inputSize){ //small = 1, medium, 2, large = 3, xLarge = 4
@@ -76,6 +78,20 @@ function showElement(elementToShow){
 function appendPrice(pizzaPrice){
   console.log(pizzaPrice);
   document.getElementById("outputArea").innerText = ("Your total is: $" + pizzaPrice.toFixed(2));
+}
+
+function appendReceipt(topping){
+  console.log(topping);
+  let newTopping = document.createElement("li");
+  newTopping.innerText(topping);
+  newTopping.setAttribute("class", "notHidden");
+  document.getElementById("orderReceipt").append(newTopping);
+}
+
+function clearReceipt(){
+  while(document.getElementById("orderReceipt").getFirstChild()){
+    document.getElementById("orderReceipt").removeFirstChild()
+  }
 }
 
 //============
