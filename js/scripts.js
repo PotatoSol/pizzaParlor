@@ -2,10 +2,12 @@ function Pizza(){
   this.toppings = [];
   this.size = -1;
   this.cost = -1;
+  this.toppingsSubmitted = false;
+  this.sizeSubmitted = false;
 }
 
 Pizza.prototype.isReady = function(){
-  if((this.size !== -1)){
+  if(this.toppingsSubmitted && this.sizeSubmitted){
     this.calculatePrice()
     appendPrice(this.cost);
     showSize(this);
@@ -61,6 +63,7 @@ Pizza.prototype.capturePizzaSize = function(){
       this.size = 4;
       break;
   }
+  this.sizeSubmitted = true;
   this.isReady();
 }
 
@@ -73,6 +76,7 @@ Pizza.prototype.captureToppings = function(){
       appendReceipt(document.getElementById("selectToppings")[i].value);
     }
   }
+  this.toppingsSubmitted = true;
   this.toppings = checkedBoxes;
 }
 
