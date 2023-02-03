@@ -2,9 +2,12 @@ function Pizza(){
   this.toppings = [];
   this.size = -1;
   this.cost = -1;
+  this.number = -1;
   this.toppingsSubmitted = false;
   this.sizeSubmitted = false;
   this.numberSubmitted = false;
+  this.numberString = "";
+  this.s = "";
 }
 
 Pizza.prototype.isReady = function(){
@@ -34,7 +37,6 @@ Pizza.prototype.setSize = function (inputSize){ //small = 1, medium, 2, large = 
 
 Pizza.prototype.calculatePrice = function(){
   let returnCost = 9; 
-  //do stuff
   let sizeMod = 1 + (this.size * .1); 
   let toppingsMod = this.toppings.length;
   this.toppings.forEach(function(ele){
@@ -44,6 +46,7 @@ Pizza.prototype.calculatePrice = function(){
   });
   returnCost += toppingsMod;
   returnCost *= sizeMod;
+  returnCost *= this.number;
   this.cost = returnCost;
   return returnCost;
 }
@@ -81,6 +84,29 @@ Pizza.prototype.captureToppings = function(inputToppings){
   this.toppings = checkedBoxes;
 }
 
+Pizza.prototype.captureNumber = function(inputNumber){
+  this.numberSubmitted = true;
+  this.number = parseInt(inputNumber);
+  switch(this.number){
+    case 1:
+      this.numberString = "A ";
+      this.s = "";
+      break;
+    case 2:
+      this.numberString = "Two ";
+      this.s = "s";
+      break;
+    case 3:
+      this.numberString = "Three ";
+      this.s = "s";
+      break;
+    case 4:
+      this.numberString = "Four ";
+      this.s = "s";
+      break;
+  }
+}
+
 //============
 function showElement(elementToShow){
   document.getElementById(elementToShow).setAttribute("class", "notHidden");
@@ -108,9 +134,10 @@ function clearReceipt(){
 }
 
 function showSize(inputPizza){
-  let toppings = "pizza";
+  let toppings = "pizza" + inputPizza.s;
   if(inputPizza.toppings.length > 0){
-    toppings = "pizza with:";
+    toppings = "pizza" + inputPizza.s + " with:";
+    console.log(inputPizza);
   }
   let size;
   if(inputPizza.size == 1){
@@ -125,7 +152,7 @@ function showSize(inputPizza){
     size = "super omega large"; //this should never happen
   }
 
-  document.getElementById("pizzaSize").innerText = "A " + size + " " + toppings;
+  document.getElementById("pizzaSize").innerText = inputPizza.numberString + size + " " + toppings;
 }
 //============
 
@@ -143,7 +170,7 @@ window.addEventListener("load", function(){
   });
   document.getElementById("selectNumber").addEventListener("submit", function(event){
     event.preventDefault();
-    userPizza.captureToppings(document.getElementById("selectNumber")).value;
+    userPizza.captureNumber(document.getElementById("number").value);
     userPizza.isReady();
   });
 });

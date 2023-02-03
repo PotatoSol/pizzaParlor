@@ -57,7 +57,7 @@ It will: "Create a Pizza object"
 Code: new Pizza();
 Expected output: Pizza{toppings: []; size: -1; cost: -1}
 
-It will: "Create a addTopping method"
+It will: "Create an addTopping method"
 Code: newPizza.addTopping("pepperoni");
 Expected output: newPizza = {toppings: ["pepperoni"]; size: -1; cost: -1}
 
@@ -76,6 +76,10 @@ Expected output: returns size 2;
 It will: "Capture toppings"
 Code:  Click toppings button with onions and peppers
 Expected output: [vOnions, vPepper] returned
+
+It will: "Capture number of pizzas"
+Code:  Click number button with number of pizzas desired
+Expected output: pizza.number updated to hold number of pizzas
 
 It will: "Check if toppings and size are greater than -1, and then calculate price"
 Code: Add toppings and choose size
