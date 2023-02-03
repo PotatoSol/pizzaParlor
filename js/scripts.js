@@ -11,10 +11,10 @@ Pizza.prototype.isReady = function(){
     this.calculatePrice()
     appendPrice(this.cost);
     showSize(this);
-    showElement(document.getElementById("outputArea"));
-    showElement(document.getElementById("orderReceipt"));
-    showElement(document.getElementById("receipt"));
-    showElement(document.getElementById("pizzaSize"));
+    showElement("outputArea");
+    showElement("orderReceipt");
+    showElement("receipt");
+    showElement("pizzaSize");
   }
 }
 
@@ -47,8 +47,8 @@ Pizza.prototype.calculatePrice = function(){
   return returnCost;
 }
 
-Pizza.prototype.capturePizzaSize = function(){
-  let inputSize = document.getElementById("size").value;
+Pizza.prototype.capturePizzaSize = function(inputSize){
+  //let inputSize = document.getElementById("size").value;
   switch(inputSize) {
     case "small":
       this.size = 1;
@@ -67,7 +67,7 @@ Pizza.prototype.capturePizzaSize = function(){
   this.isReady();
 }
 
-Pizza.prototype.captureToppings = function(){
+Pizza.prototype.captureToppings = function(inputToppings){
   var checkedBoxes = [];
   clearReceipt();
   for(var i = 0; (i < (document.getElementById("selectToppings").length - 1)); i++){
@@ -82,7 +82,7 @@ Pizza.prototype.captureToppings = function(){
 
 //============
 function showElement(elementToShow){
-  elementToShow.setAttribute("class", "notHidden");
+  document.getElementById(elementToShow).setAttribute("class", "notHidden");
 }
 
 function appendPrice(pizzaPrice){
@@ -128,12 +128,12 @@ window.addEventListener("load", function(){
   let userPizza = new Pizza();
   document.getElementById("selectPizzaSize").addEventListener("submit", function(event){
     event.preventDefault();
-    userPizza.capturePizzaSize();
+    userPizza.capturePizzaSize(document.getElementById("size").value);
     userPizza.isReady();
   });
   document.getElementById("selectToppings").addEventListener("submit", function(event){
     event.preventDefault();
-    userPizza.captureToppings();
+    userPizza.captureToppings(document.getElementById("selectToppings"));
     userPizza.isReady();
   });
 });
