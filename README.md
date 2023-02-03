@@ -63,24 +63,24 @@ Expected output: newPizza = {toppings: ["pepperoni"]; size: -1; cost: -1}
 
 It will: "Create a setSize method with small = 1, medium = 2; large = 3, xLarge = 4; method returns false if invalid size is entered"
 Code: newPizza.setSize("small");
-Expected output: true; newPizza = {toppings: ["pepperoni"]; size: "1", cost: -1}
+Expected output: true; newPizza = {toppings: ["pepperoni"]; size: "small", cost: -1}
 
 It will: "Create a calculatePrice function"
 Code: newPizza.calculatePrice();
 Expected output: newPizza.calculatePrice() = 11
 
 It will: "Capture size"
-Code:  Click medium size drop down and hit submit
-Expected output: returns size 2;
+Code:  newPizza.captureSize();
+Expected output: 2;
 
 It will: "Capture toppings"
-Code:  Click toppings button with onions and peppers
-Expected output: [vOnions, vPepper] returned
+Code:  newPizza.captureToppings();
+Expected output: [vOnions, vPepper]
 
 It will: "Capture number of pizzas"
-Code:  Click number button with number of pizzas desired
-Expected output: pizza.number updated to hold number of pizzas
+Code:  newPizza.captureNumber();
+Expected output: pizza.number = 1;, pizza.numberString = "A ", pizza.s = "";
 
-It will: "Check if toppings and size are greater than -1, and then calculate price"
-Code: Add toppings and choose size
+It will: "Check if toppings, number, and size are greater than -1, and then calculate price"
+Code: Add toppings and choose size and choose number
 Expected output: calculatePrice called 
