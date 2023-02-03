@@ -134,9 +134,15 @@ function appendReceipt(topping){ //should be in ui
   document.getElementById("orderReceipt").append(newTopping);
 }
 
-function appendReceipt2(pizza){
-  let newTopping = document.createElement("li");
-  
+function appendReceipt2(pizza){ //called when a button is hit instead
+  let toppingArray = pizza.toppings;
+  let counter = 0;
+  toppingArray.forEach(ele => {
+    let newTopping = document.createElement("li");
+    newTopping.innerText = ele;
+    newTopping.setAttribute("class", "notHidden");
+    document.getElementById("orderReceipt").append(newTopping);
+  });
 }
 
 function showSize(inputPizza){ //shout be in ui
