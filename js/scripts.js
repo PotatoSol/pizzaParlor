@@ -120,12 +120,6 @@ function appendPrice(pizzaPrice){
   document.getElementById("outputArea").innerText = ("Your total is: $" + pizzaPrice.toFixed(2));
 }
 
-function appendReceipt(topping){
-  let newTopping = document.createElement("li");
-  newTopping.innerText = topping;
-  newTopping.setAttribute("class", "notHidden");
-  document.getElementById("orderReceipt").append(newTopping);
-}
 
 function clearReceipt(){
   while(document.getElementById("orderReceipt").hasChildNodes()){
@@ -133,7 +127,19 @@ function clearReceipt(){
   }
 }
 
-function showSize(inputPizza){
+function appendReceipt(topping){ //should be in ui
+  let newTopping = document.createElement("li");
+  newTopping.innerText = topping;
+  newTopping.setAttribute("class", "notHidden");
+  document.getElementById("orderReceipt").append(newTopping);
+}
+
+function appendReceipt2(pizza){
+  let newTopping = document.createElement("li");
+  
+}
+
+function showSize(inputPizza){ //shout be in ui
   let toppings = "pizza" + inputPizza.s;
   if(inputPizza.toppings.length > 0){
     toppings = "pizza" + inputPizza.s + " with:";
@@ -151,7 +157,7 @@ function showSize(inputPizza){
   } else {
     size = "super omega large"; //this should never happen
   }
-
+  
   document.getElementById("pizzaSize").innerText = inputPizza.numberString + size + " " + toppings;
 }
 //============
