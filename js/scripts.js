@@ -4,10 +4,11 @@ function Pizza(){
   this.cost = -1;
   this.toppingsSubmitted = false;
   this.sizeSubmitted = false;
+  this.numberSubmitted = false;
 }
 
 Pizza.prototype.isReady = function(){
-  if(this.toppingsSubmitted && this.sizeSubmitted){
+  if(this.toppingsSubmitted && this.sizeSubmitted && this.numberSubmitted){
     this.calculatePrice()
     appendPrice(this.cost);
     showSize(this);
@@ -70,10 +71,10 @@ Pizza.prototype.capturePizzaSize = function(inputSize){
 Pizza.prototype.captureToppings = function(inputToppings){
   var checkedBoxes = [];
   clearReceipt();
-  for(var i = 0; (i < (document.getElementById("selectToppings").length - 1)); i++){
-    if(document.getElementById("selectToppings")[i].checked){
-      checkedBoxes.push(document.getElementById("selectToppings")[i].value);
-      appendReceipt(document.getElementById("selectToppings")[i].value);
+  for(var i = 0; (i < getElement("selectToppings").length - 1); i++){
+    if(getElement("selectToppings")[i].checked){
+      checkedBoxes.push(getElement("selectToppings")[i].value);
+      appendReceipt(getElement("selectToppings")[i].value);
     }
   }
   this.toppingsSubmitted = true;
@@ -83,6 +84,10 @@ Pizza.prototype.captureToppings = function(inputToppings){
 //============
 function showElement(elementToShow){
   document.getElementById(elementToShow).setAttribute("class", "notHidden");
+}
+
+function getElement(elementToGet){
+  return document.getElementById(elementToGet);
 }
 
 function appendPrice(pizzaPrice){
@@ -134,6 +139,11 @@ window.addEventListener("load", function(){
   document.getElementById("selectToppings").addEventListener("submit", function(event){
     event.preventDefault();
     userPizza.captureToppings(document.getElementById("selectToppings"));
+    userPizza.isReady();
+  });
+  document.getElementById("selectNumber").addEventListener("submit", function(event){
+    event.preventDefault();
+    userPizza.captureToppings(document.getElementById("selectNumber")).value;
     userPizza.isReady();
   });
 });
