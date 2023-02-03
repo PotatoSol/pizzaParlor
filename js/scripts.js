@@ -68,7 +68,7 @@ Pizza.prototype.capturePizzaSize = function(){
 }
 
 Pizza.prototype.captureToppings = function(){
-  let checkedBoxes = [];
+  var checkedBoxes = [];
   clearReceipt();
   for(var i = 0; (i < (document.getElementById("selectToppings").length - 1)); i++){
     if(document.getElementById("selectToppings")[i].checked){

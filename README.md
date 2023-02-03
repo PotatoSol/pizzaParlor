@@ -54,8 +54,8 @@ Copyright (c) _1/27/2023_ _Michael Sol_
 ## Describe Pizza Functions
 
 It will: "Create a Pizza object"
-Code: let newPizza = new Pizza();
-Expected output: newPizza = {toppings: []; size: -1; cost: -1}
+Code: new Pizza();
+Expected output: Pizza{toppings: []; size: -1; cost: -1}
 
 It will: "Create a addTopping method"
 Code: newPizza.addTopping("pepperoni");
