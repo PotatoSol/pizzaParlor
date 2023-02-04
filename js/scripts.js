@@ -191,4 +191,9 @@ window.addEventListener("load", function(){
     userPizza.isReady();
     appendReceipt2(userPizza);
   });
+  document.getElementById("submitOrder").addEventListener("submit", function(event){
+    event.preventDefault();
+    window.alert('hello');
+    console.log('hello');
+  });
 });
