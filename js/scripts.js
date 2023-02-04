@@ -15,7 +15,7 @@ Pizza.prototype.isReady = function(){
     this.calculatePrice()
     appendPrice(this.cost);
     showSize(this);
-    /*
+    /* this shouldn't be in here anyways i didn't get around to separating it correctly
     showElement("outputArea");
     showElement("orderReceipt");
     showElement("receipt");
