@@ -135,6 +135,9 @@ function appendReceipt(topping){ //should be in ui
 }
 
 function appendReceipt2(pizza){ //called when a button is hit instead
+  if(toppingsSubmitted == false || numberSubmitted == false || sizeSubmitted == false){
+    return;
+  }
   let toppingArray = pizza.toppings;
   let counter = 0;
   toppingArray.forEach(ele => {
@@ -145,7 +148,7 @@ function appendReceipt2(pizza){ //called when a button is hit instead
   });
 }
 
-function showSize(inputPizza){ //shout be in ui
+function showSize(inputPizza){ //should be in ui
   let toppings = "pizza" + inputPizza.s;
   if(inputPizza.toppings.length > 0){
     toppings = "pizza" + inputPizza.s + " with:";
@@ -163,26 +166,29 @@ function showSize(inputPizza){ //shout be in ui
   } else {
     size = "super omega large"; //this should never happen
   }
-  
   document.getElementById("pizzaSize").innerText = inputPizza.numberString + size + " " + toppings;
 }
 //============
 
 window.addEventListener("load", function(){
   let userPizza = new Pizza();
+  let pizzasOrdered = [];
   document.getElementById("selectPizzaSize").addEventListener("submit", function(event){
     event.preventDefault();
     userPizza.capturePizzaSize(document.getElementById("size").value);
     userPizza.isReady();
+    appendReceipt2(userPizza);
   });
   document.getElementById("selectToppings").addEventListener("submit", function(event){
     event.preventDefault();
     userPizza.captureToppings(document.getElementById("selectToppings"));
     userPizza.isReady();
+    appendReceipt2(userPizza);
   });
   document.getElementById("selectNumber").addEventListener("submit", function(event){
     event.preventDefault();
     userPizza.captureNumber(document.getElementById("number").value);
     userPizza.isReady();
+    appendReceipt2(userPizza);
   });
 });
