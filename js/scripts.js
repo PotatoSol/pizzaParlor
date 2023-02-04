@@ -15,10 +15,12 @@ Pizza.prototype.isReady = function(){
     this.calculatePrice()
     appendPrice(this.cost);
     showSize(this);
+    /*
     showElement("outputArea");
     showElement("orderReceipt");
     showElement("receipt");
     showElement("pizzaSize");
+    */
     showElement("submitOrder");
     return this;
   }
