@@ -19,7 +19,10 @@ Pizza.prototype.isReady = function(){
     showElement("orderReceipt");
     showElement("receipt");
     showElement("pizzaSize");
+    showElement("submitOrder");
+    return this;
   }
+  return -1;
 }
 
 Pizza.prototype.addTopping = function(inputTopping) {
@@ -176,23 +179,33 @@ window.addEventListener("load", function(){
   document.getElementById("selectPizzaSize").addEventListener("submit", function(event){
     event.preventDefault();
     userPizza.capturePizzaSize(document.getElementById("size").value);
-    userPizza.isReady();
+    let tempPizza = userPizza.isReady();
+    if(tempPizza !== -1){
+      pizzasOrdered.push(tempPizza);
+    }
     appendReceipt2(userPizza);
   });
   document.getElementById("selectToppings").addEventListener("submit", function(event){
     event.preventDefault();
     userPizza.captureToppings(document.getElementById("selectToppings"));
-    userPizza.isReady();
+    let tempPizza = userPizza.isReady();
+    if(tempPizza !== -1){
+      pizzasOrdered.push(tempPizza);
+    }
     appendReceipt2(userPizza);
   });
   document.getElementById("selectNumber").addEventListener("submit", function(event){
     event.preventDefault();
     userPizza.captureNumber(document.getElementById("number").value);
-    userPizza.isReady();
+    let tempPizza = userPizza.isReady();
+    if(tempPizza !== -1){
+      pizzasOrdered.push(tempPizza);
+    }
     appendReceipt2(userPizza);
   });
   document.getElementById("submitOrder").addEventListener("submit", function(event){
     event.preventDefault();
-    console.log('hello');
+    console.log(pizzasOrdered);
+
   });
 });
