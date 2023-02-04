@@ -135,7 +135,7 @@ function appendReceipt(topping){ //should be in ui
 }
 
 function appendReceipt2(pizza){ //called when a button is hit instead
-  if(toppingsSubmitted == false || numberSubmitted == false || sizeSubmitted == false){
+  if(pizza.toppingsSubmitted == false || pizza.numberSubmitted == false || pizza.sizeSubmitted == false){
     return;
   }
   let toppingArray = pizza.toppings;
@@ -193,7 +193,6 @@ window.addEventListener("load", function(){
   });
   document.getElementById("submitOrder").addEventListener("submit", function(event){
     event.preventDefault();
-    window.alert('hello');
     console.log('hello');
   });
 });
