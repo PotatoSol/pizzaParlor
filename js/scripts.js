@@ -20,7 +20,7 @@ Pizza.prototype.isReady = function(){
     showElement("orderReceipt");
     showElement("receipt");
     showElement("pizzaSize");
-    
+    console.log(this.toppings);
     //showElement("submitOrder");
     return this;
   }
@@ -76,7 +76,7 @@ Pizza.prototype.capturePizzaSize = function(inputSize){
   this.isReady();
 }
 
-Pizza.prototype.captureToppings = function(inputToppings){
+Pizza.prototype.captureToppings = function(){
   var checkedBoxes = [];
   clearReceipt();
   for(var i = 0; (i < getElement("selectToppings").length - 1); i++){
@@ -186,7 +186,6 @@ window.addEventListener("load", function(){
     if(tempPizza !== -1){
       pizzasOrdered.push(tempPizza);
     }
-    appendReceipt(userPizza);
   });
   document.getElementById("selectToppings").addEventListener("submit", function(event){
     event.preventDefault();
@@ -195,7 +194,6 @@ window.addEventListener("load", function(){
     if(tempPizza !== -1){
       pizzasOrdered.push(tempPizza);
     }
-    appendReceipt(userPizza);
   });
   document.getElementById("selectNumber").addEventListener("submit", function(event){
     event.preventDefault();
@@ -204,11 +202,8 @@ window.addEventListener("load", function(){
     if(tempPizza !== -1){
       pizzasOrdered.push(tempPizza);
     }
-    appendReceipt(userPizza);
   });
   document.getElementById("submitOrder").addEventListener("submit", function(event){
     event.preventDefault();
-    console.log(pizzasOrdered);
-
   });
 });
