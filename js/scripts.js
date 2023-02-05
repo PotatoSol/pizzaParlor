@@ -20,7 +20,6 @@ Pizza.prototype.isReady = function(){
     showElement("orderReceipt");
     showElement("receipt");
     showElement("pizzaSize");
-    console.log(this.toppings);
     //showElement("submitOrder");
     return this;
   }
@@ -158,7 +157,6 @@ function showSize(inputPizza){ //should be in ui
   let toppings = "pizza" + inputPizza.s;
   if(inputPizza.toppings.length > 0){
     toppings = "pizza" + inputPizza.s + " with:";
-    console.log(inputPizza);
   }
   let size;
   if(inputPizza.size == 1){
