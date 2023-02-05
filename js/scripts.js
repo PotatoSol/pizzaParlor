@@ -15,13 +15,13 @@ Pizza.prototype.isReady = function(){
     this.calculatePrice()
     appendPrice(this.cost);
     showSize(this);
-    /* this shouldn't be in here anyways i didn't get around to separating it correctly
+    // this shouldn't be in here anyways i didn't get around to separating it correctly
     showElement("outputArea");
     showElement("orderReceipt");
     showElement("receipt");
     showElement("pizzaSize");
-    */
-    showElement("submitOrder");
+    
+    //showElement("submitOrder");
     return this;
   }
   return -1;
@@ -139,6 +139,7 @@ function appendReceipt(topping){ //should be in ui
   document.getElementById("orderReceipt").append(newTopping);
 }
 
+/*
 function appendReceipt2(pizza){ //called when a button is hit instead
   if(pizza.toppingsSubmitted == false || pizza.numberSubmitted == false || pizza.sizeSubmitted == false){
     return;
@@ -152,7 +153,7 @@ function appendReceipt2(pizza){ //called when a button is hit instead
     document.getElementById("orderReceipt").append(newTopping);
   });
 }
-
+*/
 function showSize(inputPizza){ //should be in ui
   let toppings = "pizza" + inputPizza.s;
   if(inputPizza.toppings.length > 0){
@@ -185,7 +186,7 @@ window.addEventListener("load", function(){
     if(tempPizza !== -1){
       pizzasOrdered.push(tempPizza);
     }
-    appendReceipt2(userPizza);
+    appendReceipt(userPizza);
   });
   document.getElementById("selectToppings").addEventListener("submit", function(event){
     event.preventDefault();
@@ -194,7 +195,7 @@ window.addEventListener("load", function(){
     if(tempPizza !== -1){
       pizzasOrdered.push(tempPizza);
     }
-    appendReceipt2(userPizza);
+    appendReceipt(userPizza);
   });
   document.getElementById("selectNumber").addEventListener("submit", function(event){
     event.preventDefault();
@@ -203,7 +204,7 @@ window.addEventListener("load", function(){
     if(tempPizza !== -1){
       pizzasOrdered.push(tempPizza);
     }
-    appendReceipt2(userPizza);
+    appendReceipt(userPizza);
   });
   document.getElementById("submitOrder").addEventListener("submit", function(event){
     event.preventDefault();
